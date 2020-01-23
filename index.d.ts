@@ -56,7 +56,7 @@ declare module 'react-native-progress' {
     borderWidth?: number;
 
     /**
-     * Color of outer border.
+     * Color of border.
      *
      * @type {string}
      * @memberof DefaultPropTypes
@@ -242,6 +242,24 @@ declare module 'react-native-progress' {
      * @default None
      */
     fill?: string;
+
+    /**
+     * Draws inner border
+     *
+     * @type {boolean}
+     * @memberof CirclePropTypes
+     * @default false
+     */
+    innerBorder: boolean;
+
+    /**
+     * Draws outer border
+     *
+     * @type {boolean}
+     * @memberof CirclePropTypes
+     * @default true
+     */
+    outerBorder: boolean;
   }
 
   /**

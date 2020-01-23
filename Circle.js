@@ -23,6 +23,8 @@ export class ProgressCircle extends Component {
     animated: PropTypes.bool,
     borderColor: PropTypes.string,
     borderWidth: PropTypes.number,
+    innerBorder: PropTypes.bool,
+    outerBorder: PropTypes.bool,
     color: PropTypes.string,
     children: PropTypes.node,
     direction: PropTypes.oneOf(['clockwise', 'counter-clockwise']),
@@ -47,6 +49,8 @@ export class ProgressCircle extends Component {
 
   static defaultProps = {
     borderWidth: 1,
+    innerBorder: false,
+    outerBorder: true,
     color: 'rgba(0, 122, 255, 1)',
     direction: 'clockwise',
     formatText: progress => `${Math.round(progress * 100)}%`,
@@ -80,6 +84,8 @@ export class ProgressCircle extends Component {
       animated,
       borderColor,
       borderWidth,
+      innerBorder,
+      outerBorder,
       color,
       children,
       direction,
@@ -165,9 +171,25 @@ export class ProgressCircle extends Component {
           ) : (
             false
           )}
-          {border ? (
+          {outerBorder && border ? (
             <Arc
               radius={size / 2}
+              startAngle={0}
+              endAngle={(indeterminate ? endAngle * 2 : 2) * Math.PI}
+              stroke={borderColor || color}
+              strokeCap={strokeCap}
+              strokeWidth={border}
+            />
+          ) : (
+            false
+          )}
+          {innerBorder && border ? (
+            <Arc
+              offset={{
+                top: thickness,
+                left: thickness
+              }}
+              radius={(size - thickness * 2)/ 2}
               startAngle={0}
               endAngle={(indeterminate ? endAngle * 2 : 2) * Math.PI}
               stroke={borderColor || color}
