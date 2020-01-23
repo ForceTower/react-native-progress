@@ -250,7 +250,7 @@ declare module 'react-native-progress' {
      * @memberof CirclePropTypes
      * @default false
      */
-    innerBorder: boolean;
+    innerBorder?: boolean;
 
     /**
      * Draws outer border
@@ -259,7 +259,7 @@ declare module 'react-native-progress' {
      * @memberof CirclePropTypes
      * @default true
      */
-    outerBorder: boolean;
+    outerBorder?: boolean;
   }
 
   /**
